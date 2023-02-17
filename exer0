@@ -1,2 +1,32 @@
 #include <stdio.h>
 
+void merge (int a[], int lower, int mid, int upper) {
+    int *temp,i,j,k;
+
+    temp=(int*)malloc((upper-lower+1)*sizeof(int));
+
+    for(i=0, j=lower, k= mid+1; j<=mid || k<=upper;i++)
+        temp[i]= ____ ? a[j++]:a[k++];
+
+    for(i=0,j=lower;j<=upper;i++,j++)
+        a[j]=temp[i];
+        free(temp);
+}
+
+void merge_sort(inta[], int lower, int upper){
+    int mid;
+    if (upper-lower>0){
+        mid = (lower+upper)/2;
+        merge_sort(a, lower, mid);
+        merge_sort(a, mid+1, upper);
+        merge(a, lower, mid, upper);
+    }
+}
+
+int main(){
+    FILE *fp = fopen("mergesort.in", "r");
+
+    fscanf()
+
+    return 0;
+}
