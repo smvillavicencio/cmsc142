@@ -1,19 +1,27 @@
 #include <stdio.h>
+#include <stdlib.h>
+#define n 6
 
 void merge (int a[], int lower, int mid, int upper) {
     int *temp,i,j,k;
 
     temp=(int*)malloc((upper-lower+1)*sizeof(int));
-
-    for(i=0, j=lower, k= mid+1; j<=mid || k<=upper;i++)
-        temp[i]= ____ ? a[j++]:a[k++];
+    
+    for (i=0, j=lower, k= mid+1; j<=mid || k<=upper; i++ ) {
+        
+        if ( j <= mid && (k > upper || (a[j] < a[k])) ) {
+            temp[i] = a[j++];
+        } else {
+            temp[i] = a[k++];
+        }
+    }
 
     for(i=0,j=lower;j<=upper;i++,j++)
         a[j]=temp[i];
         free(temp);
 }
 
-void merge_sort(inta[], int lower, int upper){
+void merge_sort(int a[], int lower, int upper){
     int mid;
     if (upper-lower>0){
         mid = (lower+upper)/2;
@@ -24,9 +32,22 @@ void merge_sort(inta[], int lower, int upper){
 }
 
 int main(){
+
+    int numbers[n], i;
+
     FILE *fp = fopen("mergesort.in", "r");
+    FILE *fpp = fopen("mergesort.out", "w");
 
-    fscanf()
+    // get values
+    for (i=0; i<n; i++) {
+        fscanf(fp, "%d ", &numbers[i]);
+    }
 
-    return 0;
+    // call merge sort
+    merge_sort(numbers, 0, n-1);
+
+    // print values of sorted
+    for (i=0; i<n; i++) {
+        fprintf(fpp, "%i ", numbers[i]);
+    }
 }
